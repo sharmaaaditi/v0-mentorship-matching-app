@@ -7,7 +7,6 @@ import "./globals.css"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Suspense } from "react"
-import { AuthProvider } from "@/components/auth/auth-provider"
 
 export const metadata: Metadata = {
   title: "MentorLink — Mentorship matching for open source",
@@ -23,14 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <AuthProvider>
-          <Suspense fallback={<div>Loading...</div>}>
-            <SiteHeader />
-            <main role="main">{children}</main>
-            <SiteFooter />
-            <Analytics />
-          </Suspense>
-        </AuthProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <SiteHeader />
+          <main role="main">{children}</main>
+          <SiteFooter />
+          <Analytics />
+        </Suspense>
       </body>
     </html>
   )

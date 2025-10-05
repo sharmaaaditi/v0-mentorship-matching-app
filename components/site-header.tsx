@@ -3,11 +3,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { useAuth } from "@/components/auth/auth-provider"
 
 export function SiteHeader() {
-  const { user, loading, signOutUser } = useAuth()
-
   return (
     <header className="border-b bg-background">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
@@ -27,27 +24,9 @@ export function SiteHeader() {
           </Link>
         </nav>
         <div className="flex items-center gap-2">
-          {loading ? (
-            <span className="text-sm text-muted-foreground">Loading...</span>
-          ) : user ? (
-            <>
-              <Button variant="ghost" asChild size="sm">
-                <Link href="/account">Account</Link>
-              </Button>
-              <Button variant="outline" size="sm" onClick={() => signOutUser()}>
-                Sign out
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button variant="ghost" asChild size="sm">
-                <Link href="/login">Log in</Link>
-              </Button>
-              <Button asChild size="sm">
-                <Link href="/register">Create account</Link>
-              </Button>
-            </>
-          )}
+          <Button asChild size="sm">
+            <Link href="/onboarding">Get started</Link>
+          </Button>
         </div>
       </div>
     </header>
